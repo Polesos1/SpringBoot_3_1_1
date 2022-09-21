@@ -1,23 +1,27 @@
-package web.DAO;
+package web.dao;
 
 import org.springframework.stereotype.Repository;
 import web.model.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaDelete;
 import java.util.List;
 
 
 @Repository
-public class UserDAOimpl implements UserDAO {
+public class UserDaoImpl implements UserDao {
 
 
     @PersistenceContext
     private EntityManager entityManager;
-    private String User;
+
 
     @Override
     public List getAllUsers() {
-        return entityManager.createQuery(User ).getResultList();
+
+        CriteriaDelete User = null;
+        return entityManager.createQuery(User).getResultList();
     }
 
     @Override
