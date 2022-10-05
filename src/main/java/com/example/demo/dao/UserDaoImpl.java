@@ -1,31 +1,26 @@
-package web.dao;
+package com.example.demo.dao;
 
+import com.example.demo.model.User;
 import org.springframework.stereotype.Repository;
-import web.model.User;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaDelete;
 import java.util.List;
+
 
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-
     @PersistenceContext
     private EntityManager entityManager;
 
-
     @Override
-    public List getAllUsers() {
-
-        CriteriaDelete User = null;
-        return entityManager.createQuery(User).getResultList();
+    public List<User> getAllUsers() {
+        return entityManager.createQuery("from User ").getResultList();
     }
 
     @Override
-    public User show(int id) {
+    public User showUser(int id) {
         return entityManager.find(User.class, id);
     }
 
@@ -35,12 +30,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void update(int id, User updateUser) {
+    public void updateUser(int id, User updateUser) {
         entityManager.merge(updateUser);
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteUser(int id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }

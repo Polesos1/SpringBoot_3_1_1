@@ -1,10 +1,8 @@
-package web.model;
+package com.example.demo.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-
-
 
 @Entity
 @Table(name = "users")
